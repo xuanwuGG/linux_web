@@ -24,7 +24,7 @@ void sys_err(const char *str)
 
 int main(int argc,char *argv[])
 {
-    char buffer[BUFSIZ];
+    char buffer[BUFSIZ],clientIP[BUFSIZ];
     int server_fd,sfd,ret;
     struct sockaddr_in server_addr,client_addr;
     socklen_t clientLenth=sizeof(client_addr);
@@ -43,10 +43,13 @@ int main(int argc,char *argv[])
     }
     listen(server_fd,128);
     sfd=accept(server_fd,(struct sockaddr*)&client_addr,&clientLenth);
-    if(sfd==0)
+    if(sfd==-1)
     {
         sys_err("accept error!");
     }
+    printf("client's' ip:%s,port:%d\n",
+            inet_ntop(AF_INET,&client_addr.sin_addr.s_addr,clientIP,sizeof(clientIP)),
+            ntohs(client_addr.sin_port));
     while(1)
     {
     int reSize=read(sfd,buffer,sizeof(buffer));
