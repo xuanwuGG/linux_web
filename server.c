@@ -14,7 +14,7 @@
 #include<sys/socket.h>
 #include<arpa/inet.h>
 #include<ctype.h>
-#define SPORT 2116
+#define SPORT 3116
 
 void sys_err(const char *str)
 {
