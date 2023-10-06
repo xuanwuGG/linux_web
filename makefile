@@ -4,7 +4,7 @@ obj = $(patsubst %.c,%,$(file))
 ALL:$(obj)
 
 %:%.c
-	gcc $< -o $@ -g -Wall
+	gcc $< -o $@ -lwrap -L./lib -I./inc -g -Wall
 
 clean:
 	-rm -rf $(obj)
