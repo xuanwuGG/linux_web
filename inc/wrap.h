@@ -8,6 +8,7 @@
 #ifndef _WRAP_H_
 #define _WRAP_H_
 #include<sys/socket.h>
+#include<sys/select.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -19,6 +20,7 @@
 #include<strings.h>
 #include<ctype.h>
 #include<sys/wait.h>
+#include<sys/epoll.h>
 void perr_exit(const char *s);
 int Accept(int fd,struct sockaddr *sa,socklen_t *salenptr);
 int Bind(int fd,const struct sockaddr *sa,socklen_t salen);
